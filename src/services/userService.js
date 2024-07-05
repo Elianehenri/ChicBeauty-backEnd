@@ -1,19 +1,6 @@
-/* const User = require('../models/userModel');
-const { encryptPassword } = require('../utils/authUtils');
-
-// Serviço para criar usuário
-exports.createUser = async (nome, email, senha) => {
-    const encryptedSenha = encryptPassword(senha);
-    const user = new User({
-        nome,
-        email,
-        senha: encryptedSenha
-    });
-    return await user.save();
-};
- */
 
 const User = require('../models/userModel');
+const bcrypt = require('bcryptjs');
 
 // Função para criar usuário
 exports.createUser = async (nome, email, senha) => {
@@ -25,8 +12,25 @@ exports.createUser = async (nome, email, senha) => {
     return await user.save();
 };
 
-// Função para verificar se o email já está cadastrado
+// Função para verificar se o email já está em uso
 exports.isEmailUnique = async (email) => {
     const existingUser = await User.findOne({ email });
-    return existingUser ? false : true;
+    return !existingUser; // Retorna true se o email não estiver em uso
+};
+
+// Função para verificar se a senha atende aos critérios
+exports.validatePassword = (password) => {
+    // Expressão regular para validar senha
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+    return passwordRegex.test(password);
+};
+
+// Função para comparar senhas (bcrypt)
+exports.comparePasswords = async (password, hashedPassword) => {
+    return await bcrypt.compare(password, hashedPassword);
+};
+
+// Função para obter usuário por email
+exports.getUserByEmail = async (email) => {
+    return await User.findOne({ email });
 };
