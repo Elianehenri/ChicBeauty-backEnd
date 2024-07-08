@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const conectarMongoDB = require('./src/config/conectarMongoDb');
 const userRoutes = require('./src/routes/userRoutes');
 const authRoutes = require('./src/routes/authRoutes');
+const productRoutes = require('./src/routes/productRoutes');
 require('dotenv').config();
 
 const app = express();
@@ -20,6 +21,7 @@ conectarMongoDB()
 // Rotas
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes)
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
