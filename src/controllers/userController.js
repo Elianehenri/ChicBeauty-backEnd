@@ -1,7 +1,6 @@
-
 const userService = require('../services/userService');
 const { generateToken } = require('../utils/authUtils');
-const bcrypt = require('bcryptjs'); // Importa bcrypt
+const bcrypt = require('bcryptjs');
 
 // Controlador para registrar usuário e gerar token JWT
 exports.registerUser = async (req, res) => {
@@ -29,32 +28,6 @@ exports.registerUser = async (req, res) => {
         const token = generateToken(newUser);
 
         res.status(201).json({ newUser, token });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-// Controlador para fazer login e gerar token JWT
-exports.loginUser = async (req, res) => {
-    try {
-        const { email, senha } = req.body;
-        
-        // Verifica as credenciais do usuário
-        const user = await userService.getUserByEmail(email);
-
-        if (!user) {
-            return res.status(404).json({ message: 'Usuário não encontrado.' });
-        }
-
-        const isMatch = await userService.comparePasswords(senha, user.senha);
-
-        if (!isMatch) {
-            return res.status(401).json({ message: 'Credenciais inválidas.' });
-        }
-
-        const token = generateToken(user);
-
-        res.status(200).json({ user, token });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

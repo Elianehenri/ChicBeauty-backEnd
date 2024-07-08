@@ -1,4 +1,3 @@
-// src/config/conectarMongoDb.js
 
 const mongoose = require('mongoose');
 
