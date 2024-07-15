@@ -2,7 +2,7 @@ const userService = require('../services/userService');
 const { generateToken } = require('../utils/authUtils');
 const bcrypt = require('bcryptjs');
 
-// Controlador para registrar usuário e gerar token JWT
+//  registrar usuário e gerar token JWT
 exports.registerUser = async (req, res) => {
     try {
         const { nome, email, senha } = req.body;
