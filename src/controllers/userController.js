@@ -1,9 +1,12 @@
+
+
 const userService = require('../services/userService');
 const { generateToken } = require('../utils/authUtils');
 const bcrypt = require('bcryptjs');
 
-//  registrar usuário e gerar token JWT
+// Registrar usuário e gerar token JWT
 exports.registerUser = async (req, res) => {
+    console.log("Dados recebidos:", req.body); // Log dos dados recebidos
     try {
         const { nome, email, senha } = req.body;
 
@@ -28,6 +31,16 @@ exports.registerUser = async (req, res) => {
         const token = generateToken(newUser);
 
         res.status(201).json({ newUser, token });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// Obter todos os usuários
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await userService.getAllUsers();
+        res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

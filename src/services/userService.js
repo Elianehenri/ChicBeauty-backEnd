@@ -34,3 +34,8 @@ exports.comparePasswords = async (password, hashedPassword) => {
 exports.getUserByEmail = async (email) => {
     return await User.findOne({ email });
 };
+
+// Função para obter todos os usuários
+exports.getAllUsers = async () => {
+    return await User.find(); // Retorna todos os usuários
+};
