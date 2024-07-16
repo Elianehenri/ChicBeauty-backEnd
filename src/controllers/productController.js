@@ -1,5 +1,6 @@
-const productService = require('../services/productService');
 
+
+const productService = require('../services/productService');
 
 exports.createProduct = async (req, res) => {
     try {
@@ -11,7 +12,6 @@ exports.createProduct = async (req, res) => {
     }
 };
 
-
 exports.getAllProducts = async (req, res) => {
     try {
         const products = await productService.getAllProducts();
@@ -20,7 +20,6 @@ exports.getAllProducts = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 
 exports.getProductsByCategory = async (req, res) => {
     try {
@@ -31,7 +30,6 @@ exports.getProductsByCategory = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 
 exports.updateProduct = async (req, res) => {
     try {
@@ -50,22 +48,11 @@ exports.updateProduct = async (req, res) => {
     }
 };
 
-
 exports.deleteProduct = async (req, res) => {
     try {
         const id = req.params.id;
         await productService.deleteProduct(id);
         res.status(200).json({ message: 'Produto deletado com sucesso' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-
-exports.getAllCategories = async (req, res) => {
-    try {
-        const categories = await productService.getAllCategories();
-        res.status(200).json(categories);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

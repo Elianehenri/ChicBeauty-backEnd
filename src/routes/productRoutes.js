@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productController');
@@ -16,8 +17,5 @@ router.put('/:id', productController.updateProduct);
 
 //  deletar um produto
 router.delete('/:id', productController.deleteProduct);
-
-//  obter todas as categorias
-router.get('/categorias', productController.getAllCategories);
 
 module.exports = router;
