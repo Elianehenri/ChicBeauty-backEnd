@@ -3,11 +3,12 @@ const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 
 // Função criar usuário
-exports.createUser = async (nome, email, senha) => {
+exports.createUser = async (nome, email, senha, avatar) => {
     const user = new User({
         nome,
         email,
-        senha
+        senha,
+        avatar
     });
     return await user.save();
 };
@@ -20,7 +21,6 @@ exports.isEmailUnique = async (email) => {
 
 // Função  verificar se a senha atende aos critérios
 exports.validatePassword = (password) => {
- 
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
     return passwordRegex.test(password);
 };
