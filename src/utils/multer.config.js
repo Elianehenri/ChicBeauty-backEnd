@@ -14,7 +14,7 @@ const multerConfig = {
   }),
   limits: {
     fileSize: 5 * 1024 * 1024, // 5MB
-    files: 1,
+    files: 1, // Aceita apenas um arquivo
   },
   fileFilter: (req, file, callback) => {
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {

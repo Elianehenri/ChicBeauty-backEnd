@@ -1,10 +1,11 @@
 
 const express = require('express');
 const router = express.Router();
+const upload = require('../utils/multer.config');
 const productController = require('../controllers/productController');
 
-//  criar um novo produto
-router.post('/', productController.createProduct);
+// Rota para criar um novo produto com upload de imagem
+router.post('/', upload.single('imagem'), productController.createProduct);
 
 //  obter todos os produtos
 router.get('/', productController.getAllProducts);

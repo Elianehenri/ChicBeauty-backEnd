@@ -1,14 +1,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); 
-const path = require('path'); // Adicione esta linha
+const cors = require('cors');
+const path = require('path');
 const conectarMongoDB = require('./src/config/conectarMongoDb');
 const userRoutes = require('./src/routes/userRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 const productRoutes = require('./src/routes/productRoutes');
 const categoryRoutes = require('./src/routes/categoryRoutes');
-const upload = require('./src/utils/multer.config');
 
 require('dotenv').config();
 
@@ -16,11 +15,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors()); // Configurando CORS
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Configuração do middleware para servir arquivos estáticos (imagens, uploads, etc.)
+// Configuração para servir arquivos estáticos
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'), {
     maxAge: '1y' // Cache de 1 ano
 }));
