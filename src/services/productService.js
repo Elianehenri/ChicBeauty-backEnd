@@ -8,7 +8,6 @@ exports.createProduct = async (productData) => {
     const newProduct = new Product(productData);
     return await newProduct.save();
 }; 
-
 // Função para obter todos os produtos
 exports.getAllProducts = async () => {
     const products = await Product.find({}).populate('categoria'); // Popula a categoria
@@ -17,10 +16,7 @@ exports.getAllProducts = async () => {
         categoria: product.categoria.nome // Adiciona o nome da categoria ao produto
     }));
 };
-// Função para obter todos os produtos
-exports.getAllProducts = async () => {
-    return await Product.find({});
-};
+
 
 // Função para obter produtos por categoria
 exports.getProductsByCategory = async (category) => {
