@@ -1,14 +1,12 @@
-
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 
 // Função criar usuário
-exports.createUser = async (nome, email, senha, avatar) => {
+exports.createUser = async (nome, email, senha) => {
     const user = new User({
         nome,
         email,
-        senha,
-        avatar
+        senha
     });
     return await user.save();
 };
