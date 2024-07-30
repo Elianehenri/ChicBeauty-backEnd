@@ -8,7 +8,7 @@ const upload = require('../utils/multer.config.js');
 exports.registerUser = [
   upload.single('avatar'), 
   async (req, res) => {
-    console.log("Dados recebidos:", req.body);
+    
     try {
       const { nome, email, senha } = req.body;
       const avatar = req.file ? req.file.filename : null;
