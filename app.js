@@ -40,7 +40,22 @@ app.use((req, res) => {
     res.status(404).json({ message: 'Rota não encontrada' });
 });
 
-// Inicializar o servidor
+// // Inicializar o servidor
+
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
+    
+    // Executar o script para criar usuários
+    const { exec } = require('child_process');
+    exec('node seed.js', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar o script de seed: ${error}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
 });
