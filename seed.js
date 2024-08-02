@@ -289,6 +289,7 @@ const runSeed = async () => {
 
             const products = [
                 { nome: 'Perfume Lily', preco: 1500.00, categoria: categoryMap['Perfumaria'], imagem: '/uploads/perfume.png', parcelas: 6 },
+                { nome: 'Perfume Lily 120 ml', preco: 1500.00, categoria: categoryMap['Perfumaria'], imagem: '/uploads/perfume.png', parcelas: 6 },
                 { nome: 'Perfume Florata Azul', preco: 150.00, categoria: categoryMap['Perfumaria'], imagem: '/uploads/perfume.png', parcelas: 3 },
                 { nome: 'Perfume Florata Rosa', preco: 90.00, categoria: categoryMap['Perfumaria'], imagem: '/uploads/perfume.png', parcelas: 2 },
                 { nome: 'Perfume Malbec ', preco: 200.00, categoria: categoryMap['Perfumaria'], imagem: '/uploads/perfume.png', parcelas: 2 },

@@ -10,3 +10,4 @@ exports.createCategory = async (categoryData) => {
     const newCategory = new Category(categoryData);
     return await newCategory.save();
 };
+
