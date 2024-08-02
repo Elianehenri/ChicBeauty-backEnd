@@ -4,12 +4,12 @@ const path = require('path');
 
 exports.createProduct = async (req, res) => {
     try {
-        const { file } = req; // Captura o arquivo do upload
+        const { file } = req;
         const productData = {
-            nome: req.body.nome, // Certifique-se de que esses valores estão presentes
+            nome: req.body.nome,
             preco: req.body.preco,
             categoria: req.body.categoria,
-            imagem: file ? `/uploads/${file.filename}` : '', // Define o caminho da imagem se o arquivo existir
+            imagem: file ? `/uploads/${file.filename}` : '',
             parcelas: req.body.parcelas
         };
         
@@ -29,7 +29,6 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
-// Adicione esta função ao controlador
 exports.getProductById = async (req, res) => {
     try {
         const productId = req.params.id;
@@ -64,7 +63,6 @@ exports.updateProduct = async (req, res) => {
             updateData.imagem = `/uploads/${req.file.filename}`;
         }
 
-        // Verifica se o valor de categoria é válido
         if (updateData.categoria === '') {
             delete updateData.categoria;
         }
@@ -80,7 +78,6 @@ exports.updateProduct = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 
 exports.deleteProduct = async (req, res) => {
     try {
