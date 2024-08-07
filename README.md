@@ -1,6 +1,9 @@
 #  Desafio final
 # ChicBeauty Backend 
 
+## Visualizar o projeto em video.
+ 
+Acesse o [link](https://drive.google.com/file/d/1PvKCDelKc4pJ_xp3pkA4Eoyn39MBVlev/view) para visualizar o protifolio.
 
 ## Requisitos
 Desenvolva uma API REST com Node e Express que forneça os dados para o site responsivo criado no projeto "Construindo um Site Responsivo com HTML e CSS" e integre o frontend e a API. As informações devem ser armazenadas no banco de dados MongoDB.
@@ -85,9 +88,7 @@ Instale as dependências do projeto usando o npm:
 npm install
 ```
 * Executar os dois projetos no seu computador .
-# Visualizar o projeto.
- 
-Acesse o [link](https://chic-beauty-02.vercel.app/index.html) para visualizar o protifolio.
+
 
 # Autor
 Eliane Henriqueta
